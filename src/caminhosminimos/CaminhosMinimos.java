@@ -39,9 +39,10 @@ public class CaminhosMinimos {
             for(int j=0;j<n;j++){
                 if(j==i){
                     matriz[i][j] = 0;
+                }else{
+                    System.out.printf("Digite a posição matriz[%d][%d]",i,j);
+                    matriz[i][j] = teclado.nextInt();
                 }
-                System.out.printf("Digite a posição matriz[%d][%d]",i,j);
-                matriz[i][j] = teclado.nextInt();
             }
         }
        floydWarshall(matriz,n);
