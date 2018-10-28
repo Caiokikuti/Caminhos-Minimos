@@ -10,10 +10,12 @@ import java.util.Scanner;
 public class CaminhosMinimos {
      
     public static void printCaminho(int x, int y, int[][]pred){
-        while(pred[x][y] != y){
-            y = pred[x][y];
+        if(pred[x][y] != y){
             System.out.println("vertice: "+y);
+            return;
         }
+        printCaminho(x,pred[x][y], pred);
+        System.out.println(y);
     }
     
      public static void floydWarshall(int[][]mat, int n, int[][] pred){
@@ -23,7 +25,7 @@ public class CaminhosMinimos {
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
                    if(mat[i][j]> mat[i][k]+mat[k][j]){
-                       pred[i][j] = k+1;
+                       pred[i][j] = k;
                    }
                    mat[i][j] = Math.min(mat[i][j], mat[i][k]+mat[k][j]);
                 }
@@ -49,7 +51,7 @@ public class CaminhosMinimos {
         x = teclado.nextInt();
         System.out.println("Digite o destino: ");
         y = teclado.nextInt();
-        printCaminho(x-1,y-1,pred);
+        printCaminho(x,y,pred);
         
     }
     
@@ -69,7 +71,7 @@ public class CaminhosMinimos {
                 if(j==i){
                     matriz[i][j] = 0;
                 }else{
-                    System.out.printf("Digite a posição matriz[%d][%d]",i+1,j+1);
+                    System.out.printf("Digite a posição matriz[%d][%d]",i,j);
                     matriz[i][j] = teclado.nextInt();
                 }
                
