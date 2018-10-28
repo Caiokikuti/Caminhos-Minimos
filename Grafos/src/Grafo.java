@@ -82,24 +82,25 @@ public class Grafo{
         Aresta ux = g.addAresta(u,x,1);
         Aresta uv = g.addAresta(u,v,5);
         Aresta xy = g.addAresta(x,y,10);
-        Aresta xv = g.addAresta(x,y,8);
+        Aresta xv = g.addAresta(x,v,8);
         Aresta vy = g.addAresta(v,y,2);
         Aresta vw = g.addAresta(v,w,6);
         Aresta yw = g.addAresta(y,w,2);
 
-        for (Vertice i:g.vertices) {
+       /* for (Vertice i:g.vertices) {
             System.out.print(i.id + ": ");
             System.out.print(i.peso+", ");
         }
-        /*
+        */
         if(bellmanFord(g,w,s)){
             for (Vertice i:g.vertices) {
                 System.out.print(i.id + ": ");
                 System.out.print(i.peso+", ");
-                //System.out.println("pred: " + i.pred.id);
+                if(i.pred != null)
+                System.out.println("pred: " + i.pred.id);
             }
         }else{
             System.out.println("Existe ciclo negativo");
-        }*/
+        }
     }
 }
