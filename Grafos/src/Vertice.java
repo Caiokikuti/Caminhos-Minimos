@@ -2,17 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vertice {
-    private String id;
-    private List<Aresta> adj;
-    private Vertice pred;
+    String id;
+    List<Aresta> adj;
+    Vertice pred;
+    double peso;
 
-    public Vertice(String id, List<Aresta> adj, Vertice pred) {
+    public Vertice(String id, ArrayList<Aresta> adj, Vertice pred) {
         this.id = id;
         this.adj = adj;
         this.pred = pred;
     }
 
-    public Vertice(String id, List<Aresta> adj) {
+    public Vertice(String id, ArrayList<Aresta> adj) {
         this.id = id;
         this.adj = adj;
     }
