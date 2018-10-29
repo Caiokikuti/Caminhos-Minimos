@@ -5,17 +5,19 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CaminhosMinimos {
-     
+    
     public static void printCaminho(int x, int y, int[][]pred){
         if(pred[x][y] == y){
-            System.out.println("vertice: "+y);
+            System.out.print("vertices: "+y + " ");
             return;
         }
         printCaminho(x,pred[x][y], pred);
-        System.out.println(y);
+        System.out.print(" "+y+" ");
     }
     
-     public static void floydWarshall(int[][]mat, int n, int[][] pred, int x, int y){
+     public static void floydWarshall(int[][]mat, int n, int[][] pred){
+        String buffer;
+        String [] beffer;
         Scanner teclado = new Scanner(System.in);
         for(int k=0;k<n;k++){
             for(int i=0;i<n;i++){
@@ -27,6 +29,7 @@ public class CaminhosMinimos {
                 }
             }
         }
+        System.out.println();
         System.out.println("Matriz de distâncias: ");
         for(int i=0;i<n;i++){
             System.out.println(" ");
@@ -34,6 +37,7 @@ public class CaminhosMinimos {
                 System.out.print(mat[i][j]+"    ");
             }
         }
+         System.out.println();
         System.out.println("Matriz de predecessores: ");
         for(int i=0;i<n;i++){
             System.out.println(" ");
@@ -42,9 +46,20 @@ public class CaminhosMinimos {
             }
         }
         System.out.println();
-        
-        printCaminho(x-1,y-1,pred);
-        
+        do{
+          buffer = teclado.nextLine();
+          beffer = buffer.split(" "); 
+          if(beffer[0].equals("0") && beffer[1].equals("0")){
+              break;
+          }
+          if(mat[Integer.parseInt(beffer[0])-1][Integer.parseInt(beffer[1])-1] != 99999){
+            System.out.println("Resultado: "+mat[Integer.parseInt(beffer[0])-1][Integer.parseInt(beffer[1])-1]);
+            printCaminho(Integer.parseInt(beffer[0])-1,Integer.parseInt(beffer[1])-1,pred);
+          }else{
+            System.out.print("Não existe caminho");
+          }
+          System.out.println("");
+        }while(!beffer[0].equals("0") && !beffer[1].equals("0"));
     }
     
     public static void main(String[] args) {
@@ -76,14 +91,6 @@ public class CaminhosMinimos {
             beffer = buffer.split(" ");
             matriz[Integer.parseInt(beffer[0])-1][Integer.parseInt(beffer[1])-1] = Integer.parseInt(beffer[2]); 
         }
-        do{
-          buffer = teclado.nextLine();
-          beffer = buffer.split(" "); 
-          if(beffer[0].equals("0") && beffer[1].equals("0")){
-              break;
-          }
-          floydWarshall(matriz,m,pred, Integer.parseInt(beffer[0]), Integer.parseInt(beffer[1]));
-        }while(beffer[0].equals("0") && beffer[1].equals("0"));
-        
+        floydWarshall(matriz,m,pred);        
     }
 }
