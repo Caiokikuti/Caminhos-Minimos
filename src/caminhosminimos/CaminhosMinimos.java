@@ -1,11 +1,8 @@
 
 package caminhosminimos;
 import static caminhosminimos.CaminhosMinimos.floydWarshall;
+import java.util.Arrays;
 import java.util.Scanner;
-
-
-
-
 
 public class CaminhosMinimos {
      
@@ -18,8 +15,7 @@ public class CaminhosMinimos {
         System.out.println(y);
     }
     
-     public static void floydWarshall(int[][]mat, int n, int[][] pred){
-        int x, y;
+     public static void floydWarshall(int[][]mat, int n, int[][] pred, int x, int y){
         Scanner teclado = new Scanner(System.in);
         for(int k=0;k<n;k++){
             for(int i=0;i<n;i++){
@@ -45,39 +41,49 @@ public class CaminhosMinimos {
                 System.out.print(pred[i][j]+"    ");
             }
         }
+        System.out.println();
         
-        System.out.println("");
-        System.out.println("Digite o vertice de origem: ");
-        x = teclado.nextInt();
-        System.out.println("Digite o destino: ");
-        y = teclado.nextInt();
-        printCaminho(x,y,pred);
+        printCaminho(x-1,y-1,pred);
         
     }
     
     public static void main(String[] args) {
-        int m;
-        
+        int m, n, peso;
+        String buffer;
+        String [] beffer;
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Vertices: ");
+        System.out.print("Vertices: ");
         m=teclado.nextInt();
-
+        System.out.print("Aresta: ");
+        n = teclado.nextInt();
+        teclado.nextLine();
         int[][] pred = new int[m][m];
         int[][] matriz = new int[m][m];
         
         for(int i=0;i<m;i++){
             for(int j=0;j<m;j++){
-                pred[i][j] = i+1;
+                pred[i][j] = i;
                 if(j==i){
                     matriz[i][j] = 0;
                 }else{
-                    System.out.printf("Digite a posição matriz[%d][%d]",i,j);
-                    matriz[i][j] = teclado.nextInt();
+                    matriz[i][j] = 99999;
                 }
                
             }
         }
-       floydWarshall(matriz,m,pred);
+        for(int k=0;k<n;k++){
+            buffer = teclado.nextLine();
+            beffer = buffer.split(" ");
+            matriz[Integer.parseInt(beffer[0])-1][Integer.parseInt(beffer[1])-1] = Integer.parseInt(beffer[2]); 
+        }
+        do{
+          buffer = teclado.nextLine();
+          beffer = buffer.split(" "); 
+          if(beffer[0].equals("0") && beffer[1].equals("0")){
+              break;
+          }
+          floydWarshall(matriz,m,pred, Integer.parseInt(beffer[0]), Integer.parseInt(beffer[1]));
+        }while(beffer[0].equals("0") && beffer[1].equals("0"));
+        
     }
-    
 }
