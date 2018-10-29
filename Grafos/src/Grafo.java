@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Grafo{
     private ArrayList<Vertice> vertices = new ArrayList<>();
@@ -94,7 +92,6 @@ public class Grafo{
         String[] separate;
         Vertice u,v;
 
-        System.out.print("Digite a quantidade de vértices e arestas: ");
         buffer = input.nextLine();
         separate = buffer.split(" ");
         int qtdVertices = Integer.parseInt(separate[0]);
@@ -103,8 +100,18 @@ public class Grafo{
         for (int i = 0; i<qtdArestas;i++){
             buffer = input.nextLine();
             separate = buffer.split(" ");
-            u = g.addVertice(separate[0]);
-            v = g.addVertice(separate[1]);
+
+            if(getVertice(g,separate[0]) == null){
+                u = g.addVertice(separate[0]);
+            }else{
+                u = getVertice(g,separate[0]);
+            }
+
+            if(getVertice(g,separate[1]) == null){
+                v = g.addVertice(separate[1]);
+            }else{
+                v = getVertice(g,separate[1]);
+            }
             g.addAresta(u,v,Double.parseDouble(separate[2]));
         }
         do {
@@ -119,7 +126,7 @@ public class Grafo{
                     System.out.print(i.peso + ", ");
                 }
                 System.out.println();
-                printarCaminho(getVertice(g,separate[0]));
+                printarCaminho(Objects.requireNonNull(getVertice(g, separate[0])));
                 System.out.println();
             }else{
                 System.out.println("Existe ciclo negativo");
@@ -131,7 +138,7 @@ public class Grafo{
                     System.out.print(i.peso + ", ");
                 }
                 System.out.println();
-                printarCaminho(getVertice(g,separate[0]));
+                printarCaminho(Objects.requireNonNull(getVertice(g, separate[0])));
                 System.out.println();
             }
         }while (!separate[0].equals("0") && !separate[1].equals("0"));
