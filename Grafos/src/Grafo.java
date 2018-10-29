@@ -41,6 +41,19 @@ public class Grafo{
             v.pred = u;
         }
     }
+    
+    private static void Relax2(Vertice u, Vertice v, Aresta w,PriorityQueue<Par<Double,Vertice>> q){
+        if (v.peso > (u.peso + w.peso)){
+            v.peso = u.peso + w.peso;
+            v.pred = u;
+            for(Par<Double, Vertice> p: q){
+                if(p.getU() == v){
+                    p.setT(v.peso);
+                }
+            }
+        }
+    }
+
 
     private static boolean bellmanFord(Grafo g, Vertice w, Vertice s){
         initializeSingleSource(g,s);
@@ -56,24 +69,26 @@ public class Grafo{
         }
         return true;
     }
-    private static boolean djikstra(Grafo g, Vertice w, Vertice s){
+    
+    public static void Djikstra(Grafo g, Vertice w, Vertice s){
         PriorityQueue<Par<Double,Vertice>> q = new PriorityQueue<Par<Double, Vertice>>();
         ArrayList<Vertice> buffer = new ArrayList<>();
         initializeSingleSource(g, s);
         Vertice u = new Vertice();
+        
         for(Vertice v: g.vertices){
             q.add(new Par <Double, Vertice>(v.peso, v));
         }
-        while(!q.isEmpty()) {
-            u = q.poll().getU();
+        while(!q.isEmpty()){
+            u = q.peek().getU();
+            //u = q.poll().getU();
             buffer.add(u);
-            for (Vertice a : g.vertices) {
-                for (Aresta x : a.adj) {
-                    Relax(x.origem, x.destino, x);
-                }
+            for(Aresta a: u.adj){
+               Relax2(u,a.destino,a,q);
+               //Relax(u,a.destino,a);
             }
+           q.remove();
         }
-        return true;
     }
 
     private static void printarCaminho(Vertice v){
