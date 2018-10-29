@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class CaminhosMinimos {
      
     public static void printCaminho(int x, int y, int[][]pred){
-        if(pred[x][y] != y){
+        if(pred[x][y] == y){
             System.out.println("vertice: "+y);
             return;
         }
