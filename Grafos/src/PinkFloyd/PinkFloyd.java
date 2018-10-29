@@ -1,6 +1,5 @@
-
-package PinkFloyd;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class PinkFloyd {
     
@@ -35,7 +34,7 @@ public class PinkFloyd {
                 System.out.print(mat[i][j]+"    ");
             }
         }
-         System.out.println();
+        System.out.println();
         System.out.println("Matriz de predecessores: ");
         for(int i=0;i<n;i++){
             System.out.println(" ");
@@ -45,8 +44,10 @@ public class PinkFloyd {
         }
         System.out.println();
         do{
+
           buffer = teclado.nextLine();
           beffer = buffer.split(" "); 
+          
           if(beffer[0].equals("0") && beffer[1].equals("0")){
               break;
           }
@@ -65,11 +66,10 @@ public class PinkFloyd {
         String buffer;
         String [] beffer;
         Scanner teclado = new Scanner(System.in);
-        System.out.print("Vertices: ");
-        m=teclado.nextInt();
-        System.out.print("Aresta: ");
-        n = teclado.nextInt();
-        teclado.nextLine();
+        buffer=teclado.nextLine();
+        beffer = buffer.split(" ");
+        m = Integer.parseInt(beffer[0]);
+        n = Integer.parseInt(beffer[1]);
         int[][] pred = new int[m][m];
         int[][] matriz = new int[m][m];
         
