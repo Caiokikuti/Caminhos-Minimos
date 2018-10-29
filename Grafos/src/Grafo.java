@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Grafo{
     private ArrayList<Vertice> vertices = new ArrayList<>();
@@ -6,17 +6,25 @@ public class Grafo{
 
     private Grafo(){}
 
-    private Vertice addVertice(Grafo g,String nome){
+    private Vertice addVertice(String nome){
         Vertice v = new Vertice(nome);
         vertices.add(v);
         return v;
     }
 
-    private Aresta addAresta(Vertice origem, Vertice destino, double peso){
+    private static Vertice getVertice(Grafo g, String id){
+        for (Vertice aux: g.vertices) {
+            if (aux.id.equals(id)){
+                return aux;
+            }
+        }
+        return null;
+    }
+
+    private void addAresta(Vertice origem, Vertice destino, double peso){
         Aresta a = new Aresta(origem,destino,peso);
         origem.addAdj(a);
         arestas.add(a);
-        return a;
     }
 
     private static void initializeSingleSource(Grafo g, Vertice s){
@@ -48,7 +56,7 @@ public class Grafo{
         }
         return true;
     }
-    public static boolean Djikstra(Grafo g, Vertice w, Vertice s){
+    private static boolean djikstra(Grafo g, Vertice w, Vertice s){
         PriorityQueue<Par<Double,Vertice>> q = new PriorityQueue<Par<Double, Vertice>>();
         ArrayList<Vertice> buffer = new ArrayList<>();
         initializeSingleSource(g, s);
@@ -56,81 +64,83 @@ public class Grafo{
         for(Vertice v: g.vertices){
             q.add(new Par <Double, Vertice>(v.peso, v));
         }
-        while(!q.isEmpty()){
+        while(!q.isEmpty()) {
             u = q.poll().getU();
             buffer.add(u);
-            for(Vertice a: g.vertices){
-                for(Aresta x: a.adj){
-                    Relax(x.origem,x.destino,x);
+            for (Vertice a : g.vertices) {
+                for (Aresta x : a.adj) {
+                    Relax(x.origem, x.destino, x);
                 }
             }
         }
         return true;
     }
 
-
-    public static void printarCaminoBellmanFord(Vertice v){
+    private static void printarCaminho(Vertice v){
         if(v.pred == null){
             System.out.print(v.id + ", ");
             return;
         }
-        printarCaminoBellmanFord(v.pred);
+        printarCaminho(v.pred);
         System.out.print(v.id + ", ");
     }
 
     public static void main(String[] args){
         Grafo g = new Grafo();
-        /*
-        Vertice s = g.addVertice(g,"s");
-        Vertice u = g.addVertice(g,"u");
-        Vertice v = g.addVertice(g,"v");
-        Vertice w = g.addVertice(g,"w");
-        Vertice x = g.addVertice(g,"x");
-        Vertice y = g.addVertice(g,"y");
+        Scanner input = new Scanner(System.in);
+        String buffer;
+        String[] separate;
+        Vertice u,v;
 
-        Aresta su = g.addAresta(s,u,10);
-        Aresta sx = g.addAresta(s,x,3);
-        Aresta ux = g.addAresta(u,x,3);
-        Aresta uv = g.addAresta(u,v,2);
-        Aresta uy = g.addAresta(u,y,-3);
-        Aresta xy = g.addAresta(x,y,3);
-        Aresta vu = g.addAresta(v,u,-1);
-        Aresta yv = g.addAresta(y,v,7);
-        Aresta yw = g.addAresta(y,w,1);
-        Aresta wv = g.addAresta(w,v,5);
-        */
-        Vertice s = g.addVertice(g,"s");
-        Vertice u = g.addVertice(g,"u");
-        Vertice v = g.addVertice(g,"v");
-        Vertice w = g.addVertice(g,"w");
-        Vertice x = g.addVertice(g,"x");
-        Vertice y = g.addVertice(g,"y");
+        buffer = input.nextLine();
+        separate = buffer.split(" ");
+        int qtdVertices = Integer.parseInt(separate[0]);
+        int qtdArestas = Integer.parseInt(separate[1]);
 
-        Aresta su = g.addAresta(s,u,4);
-        Aresta sx = g.addAresta(s,x,2);
-        Aresta ux = g.addAresta(u,x,1);
-        Aresta uv = g.addAresta(u,v,5);
-        Aresta xy = g.addAresta(x,y,10);
-        Aresta xv = g.addAresta(x,v,8);
-        Aresta vy = g.addAresta(v,y,2);
-        Aresta vw = g.addAresta(v,w,6);
-        Aresta yw = g.addAresta(y,w,2);
+        for (int i = 0; i<qtdArestas;i++){
+            buffer = input.nextLine();
+            separate = buffer.split(" ");
 
-       /* for (Vertice i:g.vertices) {
-            System.out.print(i.id + ": ");
-            System.out.print(i.peso+", ");
-        }
-        */
-        if(bellmanFord(g,w,s)){
-            for (Vertice i:g.vertices) {
-                System.out.print(i.id + ": ");
-                System.out.print(i.peso + ", ");
+            if(getVertice(g,separate[0]) == null){
+                u = g.addVertice(separate[0]);
+            }else{
+                u = getVertice(g,separate[0]);
             }
-            System.out.println();
-            printarCaminoBellmanFord(w);
-        }else{
-            System.out.println("Existe ciclo negativo");
-        }
 
+            if(getVertice(g,separate[1]) == null){
+                v = g.addVertice(separate[1]);
+            }else{
+                v = getVertice(g,separate[1]);
+            }
+            g.addAresta(u,v,Double.parseDouble(separate[2]));
+        }
+        do {
+            buffer = input.nextLine();
+            separate = buffer.split(" ");
+            if (separate[0].equals("0") && separate[1].equals("0")) {
+                break;
+            }
+            if(bellmanFord(g,getVertice(g,separate[0]),getVertice(g,separate[1]))){
+                for (Vertice i:g.vertices) {
+                    System.out.print(i.id + ": ");
+                    System.out.print(i.peso + ", ");
+                }
+                System.out.println();
+                printarCaminho(Objects.requireNonNull(getVertice(g, separate[0])));
+                System.out.println();
+            }else{
+                System.out.println("Existe ciclo negativo");
+            }
+
+            if (djikstra(g,getVertice(g,separate[0]),getVertice(g,separate[1]))){
+                for (Vertice i:g.vertices) {
+                    System.out.print(i.id + ": ");
+                    System.out.print(i.peso + ", ");
+                }
+                System.out.println();
+                printarCaminho(Objects.requireNonNull(getVertice(g, separate[0])));
+                System.out.println();
+            }
+        }while (!separate[0].equals("0") && !separate[1].equals("0"));
     }
 }

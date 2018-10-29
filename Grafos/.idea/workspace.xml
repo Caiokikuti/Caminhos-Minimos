@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56ab295b-ce98-47c3-8d8e-ba1a9420bbb9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Grafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grafo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entrada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/entrada.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,6 +11,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1644926576">
@@ -48,30 +52,34 @@
     <session id="-1081223777">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.44" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="3" />
+          <entry key="class" value="1" />
+          <entry key="java" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1152" />
+          <entry key="java" value="2323" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1152" />
+          <entry key="JAVA" value="2323" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -85,17 +93,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Grafo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+            <state relative-caret-position="588">
+              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Par.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Aresta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="1" />
+            <state relative-caret-position="210">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -103,8 +116,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Vertice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="273">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#557#558#0" expanded="true" />
+                <element signature="e#583#584#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,8 +141,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Aresta.java" />
+        <option value="$PROJECT_DIR$/src/Par.java" />
         <option value="$PROJECT_DIR$/src/Vertice.java" />
+        <option value="$PROJECT_DIR$/src/Aresta.java" />
         <option value="$PROJECT_DIR$/src/Grafo.java" />
       </list>
     </option>
@@ -171,7 +189,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540766338426" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540782148615" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -225,16 +243,59 @@
       <workItem from="1540687416288" duration="3210000" />
       <workItem from="1540740460368" duration="6681000" />
       <workItem from="1540765092584" duration="1248000" />
+      <workItem from="1540767502628" duration="2061000" />
+      <workItem from="1540773864776" duration="1054000" />
+      <workItem from="1540775124977" duration="3619000" />
+      <workItem from="1540779728486" duration="2434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11139000" />
+    <option name="totallyTimeSpent" value="20307000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="740" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25911853" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2773556" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32874355" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32718122" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32885906" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32718122" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27279636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -252,7 +313,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32874355" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32718122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -262,7 +323,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -274,24 +335,38 @@
     <entry file="file://$PROJECT_DIR$/Grafos/src/Vertice.java" />
     <entry file="file://$PROJECT_DIR$/Grafos/src/Aresta.java" />
     <entry file="file://$PROJECT_DIR$/Grafos/src/Grafo.java" />
-    <entry file="file://$PROJECT_DIR$/src/Grafo.java">
+    <entry file="jrt:///usr/lib/jvm/java-10-openjdk!/java.base/java/lang/Object.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+        <state relative-caret-position="609">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Grafo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Par.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Aresta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" />
+        <state relative-caret-position="210">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Vertice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="273">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

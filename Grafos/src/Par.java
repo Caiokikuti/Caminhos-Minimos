@@ -1,7 +1,3 @@
-package grafo;
-import java.util.*;
-
-
 public class Par < T extends Comparable < T > , U >  implements Comparable < Par < T,U > >  {
     private T t;
     private U u;
