@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class Grafo{
     private ArrayList<Vertice> vertices = new ArrayList<>();
@@ -48,7 +49,7 @@ public class Grafo{
         }
         return true;
     }
-    public static boolean Djikstra(Grafo g, Vertice w, Vertice s){
+    public static boolean djikstra(Grafo g, Vertice w, Vertice s){
         PriorityQueue<Par<Double,Vertice>> q = new PriorityQueue<Par<Double, Vertice>>();
         ArrayList<Vertice> buffer = new ArrayList<>();
         initializeSingleSource(g, s);
@@ -56,49 +57,30 @@ public class Grafo{
         for(Vertice v: g.vertices){
             q.add(new Par <Double, Vertice>(v.peso, v));
         }
-        while(!q.isEmpty()){
+        while(!q.isEmpty()) {
             u = q.poll().getU();
             buffer.add(u);
-            for(Vertice a: g.vertices){
-                for(Aresta x: a.adj){
-                    Relax(x.origem,x.destino,x);
+            for (Vertice a : g.vertices) {
+                for (Aresta x : a.adj) {
+                    Relax(x.origem, x.destino, x);
                 }
             }
         }
         return true;
     }
 
-
-    public static void printarCaminoBellmanFord(Vertice v){
+    private static void printarCaminho(Vertice v){
         if(v.pred == null){
             System.out.print(v.id + ", ");
             return;
         }
-        printarCaminoBellmanFord(v.pred);
+        printarCaminho(v.pred);
         System.out.print(v.id + ", ");
     }
 
     public static void main(String[] args){
         Grafo g = new Grafo();
-        /*
-        Vertice s = g.addVertice(g,"s");
-        Vertice u = g.addVertice(g,"u");
-        Vertice v = g.addVertice(g,"v");
-        Vertice w = g.addVertice(g,"w");
-        Vertice x = g.addVertice(g,"x");
-        Vertice y = g.addVertice(g,"y");
 
-        Aresta su = g.addAresta(s,u,10);
-        Aresta sx = g.addAresta(s,x,3);
-        Aresta ux = g.addAresta(u,x,3);
-        Aresta uv = g.addAresta(u,v,2);
-        Aresta uy = g.addAresta(u,y,-3);
-        Aresta xy = g.addAresta(x,y,3);
-        Aresta vu = g.addAresta(v,u,-1);
-        Aresta yv = g.addAresta(y,v,7);
-        Aresta yw = g.addAresta(y,w,1);
-        Aresta wv = g.addAresta(w,v,5);
-        */
         Vertice s = g.addVertice(g,"s");
         Vertice u = g.addVertice(g,"u");
         Vertice v = g.addVertice(g,"v");
@@ -116,20 +98,26 @@ public class Grafo{
         Aresta vw = g.addAresta(v,w,6);
         Aresta yw = g.addAresta(y,w,2);
 
-       /* for (Vertice i:g.vertices) {
-            System.out.print(i.id + ": ");
-            System.out.print(i.peso+", ");
-        }
-        */
         if(bellmanFord(g,w,s)){
             for (Vertice i:g.vertices) {
                 System.out.print(i.id + ": ");
                 System.out.print(i.peso + ", ");
             }
             System.out.println();
-            printarCaminoBellmanFord(w);
+            printarCaminho(w);
+            System.out.println();
         }else{
             System.out.println("Existe ciclo negativo");
+        }
+
+        if (djikstra(g,w,s)){
+            for (Vertice i:g.vertices) {
+                System.out.print(i.id + ": ");
+                System.out.print(i.peso + ", ");
+            }
+            System.out.println();
+            printarCaminho(w);
+            System.out.println();
         }
 
     }

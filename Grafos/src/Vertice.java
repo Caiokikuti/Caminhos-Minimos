@@ -22,6 +22,7 @@ public class Vertice {
         this.id = id;
         this.adj = new ArrayList<Aresta>();
     }
+    public Vertice(){}
 
     void addAdj(Aresta a){
         adj.add(a);
