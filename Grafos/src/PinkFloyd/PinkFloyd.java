@@ -1,10 +1,8 @@
 
-package caminhosminimos;
-import static caminhosminimos.CaminhosMinimos.floydWarshall;
-import java.util.Arrays;
+package PinkFloyd;
 import java.util.Scanner;
 
-public class CaminhosMinimos {
+public class PinkFloyd {
     
     public static void printCaminho(int x, int y, int[][]pred){
         if(pred[x][y] == y){

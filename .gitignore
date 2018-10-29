@@ -1,5 +1,4 @@
-/build/
-build.xml
 .vscode/
-manifest.mf
 Grafos/.idea/
+Grafos/Grafos.iml
+Grafos/out/
