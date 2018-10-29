@@ -48,6 +48,26 @@ public class Grafo{
         }
         return true;
     }
+    public static boolean Djikstra(Grafo g, Vertice w, Vertice s){
+        PriorityQueue<Par<Double,Vertice>> q = new PriorityQueue<Par<Double, Vertice>>();
+        ArrayList<Vertice> buffer = new ArrayList<>();
+        initializeSingleSource(g, s);
+        Vertice u = new Vertice();
+        for(Vertice v: g.vertices){
+            q.add(new Par <Double, Vertice>(v.peso, v));
+        }
+        while(!q.isEmpty()){
+            u = q.poll().getU();
+            buffer.add(u);
+            for(Vertice a: g.vertices){
+                for(Aresta x: a.adj){
+                    Relax(x.origem,x.destino,x);
+                }
+            }
+        }
+        return true;
+    }
+
 
     public static void main(String[] args){
         Grafo g = new Grafo();
