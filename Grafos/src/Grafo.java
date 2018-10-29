@@ -69,6 +69,15 @@ public class Grafo{
     }
 
 
+    public static void printarCaminoBellmanFord(Vertice v){
+        if(v.pred == null){
+            System.out.print(v.id + ", ");
+            return;
+        }
+        printarCaminoBellmanFord(v.pred);
+        System.out.print(v.id + ", ");
+    }
+
     public static void main(String[] args){
         Grafo g = new Grafo();
         /*
@@ -115,12 +124,13 @@ public class Grafo{
         if(bellmanFord(g,w,s)){
             for (Vertice i:g.vertices) {
                 System.out.print(i.id + ": ");
-                System.out.print(i.peso+", ");
-                if(i.pred != null)
-                System.out.println("pred: " + i.pred.id);
+                System.out.print(i.peso + ", ");
             }
+            System.out.println();
+            printarCaminoBellmanFord(w);
         }else{
             System.out.println("Existe ciclo negativo");
         }
+
     }
 }
