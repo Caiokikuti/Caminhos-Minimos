@@ -8,4 +8,5 @@ public class Aresta {
         this.destino = destino;
         this.peso = peso;
     }
+    public Aresta(){}
 }
