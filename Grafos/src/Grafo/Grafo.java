@@ -1,3 +1,6 @@
+import grafos.Aresta;
+import grafos.Par;
+import grafos.Vertice;
 import java.util.*;
 
 public class Grafo{
@@ -53,6 +56,34 @@ public class Grafo{
             }
         }
     }
+    private static void Relax3(Vertice u, Vertice v, Aresta w,PriorityQueue<Par<Double,Vertice>> q ){
+        if (v.peso > (u.peso + w.peso)){
+            v.peso = u.peso + w.peso;
+            v.pred = u;
+            Par par = new Par(v.peso, v);
+            q.add(par);
+        }else{
+            q.poll();
+        }
+    }
+    
+     public static boolean  djikstra2(grafos.Grafo g, Vertice w, Vertice s){
+        PriorityQueue<Par<Double, Vertice>> q = new  PriorityQueue<Par<Double, Vertice>>();
+        initializeSingleSource(g, s);
+        Vertice u = new Vertice();
+        for(Vertice v: g.vertices){
+            Par par = new Par(v.peso, v);
+            q.add(par);
+        }
+        while(!q.isEmpty()){
+            u = q.poll().getU();
+            for(Aresta a: u.adj){
+                Relax3(u,a.destino, a, q);
+            }
+        }
+        return true;
+    }
+    
 
     private static boolean bellmanFord(Grafo g, Vertice w, Vertice s){
         initializeSingleSource(g,s);
@@ -143,7 +174,7 @@ public class Grafo{
                 System.out.println("Existe ciclo negativo");
             }
 
-            if (djikstra(g,getVertice(g,separate[1]),getVertice(g,separate[0]))){
+            if (djikstra2(g,getVertice(g,separate[1]),getVertice(g,separate[0]))){
                 for (Vertice i:g.vertices) {
                     System.out.print(i.id + ": ");
                     System.out.print(i.peso + ", ");
