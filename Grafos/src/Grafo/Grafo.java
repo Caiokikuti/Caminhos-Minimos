@@ -1,6 +1,4 @@
-import grafos.Aresta;
-import grafos.Par;
-import grafos.Vertice;
+
 import java.util.*;
 
 public class Grafo{
@@ -62,13 +60,12 @@ public class Grafo{
             v.pred = u;
             Par par = new Par(v.peso, v);
             q.add(par);
-        }else{
-            q.poll();
         }
     }
     
-     public static boolean  djikstra2(grafos.Grafo g, Vertice w, Vertice s){
+     public static boolean  djikstra2(Grafo g, Vertice w, Vertice s){
         PriorityQueue<Par<Double, Vertice>> q = new  PriorityQueue<Par<Double, Vertice>>();
+        HashMap<String, Vertice> S = new HashMap<String, Vertice>();
         initializeSingleSource(g, s);
         Vertice u = new Vertice();
         for(Vertice v: g.vertices){
@@ -77,9 +74,12 @@ public class Grafo{
         }
         while(!q.isEmpty()){
             u = q.poll().getU();
-            for(Aresta a: u.adj){
-                Relax3(u,a.destino, a, q);
-            }
+            if(!S.containsKey(u.id)){
+                for(Aresta a: u.adj){
+                    Relax3(u,a.destino, a, q);
+                }
+            }    
+                S.put(u.id, u);
         }
         return true;
     }
@@ -136,7 +136,7 @@ public class Grafo{
         Scanner input = new Scanner(System.in);
         String buffer;
         String[] separate;
-        Vertice u,v;
+        Vertice u,v,aux;
 
         buffer = input.nextLine();
         separate = buffer.split(" ");
@@ -161,27 +161,26 @@ public class Grafo{
             separate = buffer.split(" ");
             if (separate[0].equals("0") && separate[1].equals("0")) {
                 break;
-            }
+            }  
             if(bellmanFord(g,getVertice(g,separate[1]),getVertice(g,separate[0]))){
-                for (Vertice i:g.vertices) {
-                    System.out.print(i.id + ": ");
-                    System.out.print(i.peso + ", ");
-                }
-                System.out.println();
-                printarCaminho(Objects.requireNonNull(getVertice(g, separate[1])));
-                System.out.println();
+                //printarCaminho(Objects.requireNonNull(getVertice(g, separate[1])));
+                System.out.println(getVertice(g, separate[1]).peso);
             }else{
                 System.out.println("Existe ciclo negativo");
             }
-
+            
             if (djikstra2(g,getVertice(g,separate[1]),getVertice(g,separate[0]))){
-                for (Vertice i:g.vertices) {
-                    System.out.print(i.id + ": ");
-                    System.out.print(i.peso + ", ");
+                //printarCaminho(Objects.requireNonNull(getVertice(g, separate[1])));
+                aux = getVertice(g, separate[1]);
+                if(aux != null){
+                    if (aux.peso != 10000) {
+                        System.out.println(getVertice(g, separate[1]).peso);
+                    }else{
+                        System.out.println("Não existe caminho.");
+                    }
+                }else{
+                    System.out.println("Não existe caminho.");
                 }
-                System.out.println();
-                printarCaminho(Objects.requireNonNull(getVertice(g, separate[1])));
-                System.out.println();
             }
         }while (!separate[0].equals("0") && !separate[1].equals("0"));
     }
